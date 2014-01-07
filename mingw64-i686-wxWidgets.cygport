@@ -4,7 +4,7 @@ inherit cross
 
 NAME="mingw64-i686-wxWidgets"
 VERSION=2.8.12.1
-RELEASE=2
+RELEASE=3
 CATEGORY="Devel"
 SUMMARY="wxWidgets C++ application framework for Win32 toolchain"
 DESCRIPTION="This package does NOT contain cygwin binaries.  Instead, it
@@ -65,8 +65,8 @@ src_install() {
 	cyginstall
 	cyginstall -C contrib/src CONTRIB_SUBDIRS="gizmos stc svg"
 
-	cp -f {shared,static}/lib/lib* ${D}${CROSS_LIBDIR}
-	cp -fr {shared,static}/lib/wx/ ${D}${CROSS_LIBDIR}
+	cp -f ${B}/{shared,static}/lib/lib* ${D}${CROSS_LIBDIR}
+	cp -fr ${B}/{shared,static}/lib/wx/ ${D}${CROSS_LIBDIR}
 	rm -f ${D}${CROSS_LIBDIR}/wx/config/inplace-*
 
 	mv ${D}${CROSS_LIBDIR}/*.dll ${D}${CROSS_BINDIR}
